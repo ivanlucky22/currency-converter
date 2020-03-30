@@ -45,6 +45,7 @@ public class ConverterServiceImpl implements ConverterService {
     }
 
     private ExternalConverterService getRandomConverter(final List<ExternalConverterService> externalConverters) {
+        Assert.notEmpty(externalConverters, "All external providers are unreachable at the moment");
         final int index = random.nextInt(externalConverters.size());
         return externalConverters.get(index);
     }

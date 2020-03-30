@@ -1,8 +1,9 @@
-package com.example.converterservice.web;
+package com.example.converterservice.web.rest;
 
 import com.example.converterservice.domain.ConverterRequest;
 import com.example.converterservice.domain.ConverterResponse;
 import com.example.converterservice.service.ConverterService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class ConverterResource {
         this.converterService = converterService;
     }
 
-    @PostMapping("/currency/convert")
+    @PostMapping(value = "/currency/convert", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ConverterResponse> convert(@RequestBody ConverterRequest converterRequest) {
         return converterService.convert(converterRequest);
     }
